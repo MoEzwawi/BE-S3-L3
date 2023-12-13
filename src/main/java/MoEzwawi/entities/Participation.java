@@ -11,11 +11,12 @@ public class Participation {
     @GeneratedValue
     private long id;
     @ManyToOne
-    @JoinColumn(name = "customer_id", unique = true)
+    @JoinColumn(name = "customer_id")
     private Person person;
     @ManyToOne
-    @JoinColumn(name = "event_id", unique = true)
+    @JoinColumn(name = "event_id")
     private Event event;
+    @Enumerated(EnumType.STRING)
     private ParticipationState state;
 
     public Participation() {
@@ -58,7 +59,7 @@ public class Participation {
     public String toString() {
         return "Participation{" +
                 "person=" + person +
-                ", event=" + event +
+                ", event=" + event.getTitle() +
                 ", state=" + state +
                 '}';
     }

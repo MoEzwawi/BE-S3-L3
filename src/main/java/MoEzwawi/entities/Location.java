@@ -5,7 +5,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Location {
-    @Column(name="venue_name",unique = true)
+    @Column(name="venue_name",unique = false)
     private String name;
     @Column(name="venue_city")
     private String city;

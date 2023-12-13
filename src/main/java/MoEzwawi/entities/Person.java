@@ -17,15 +17,23 @@ public class Person {
     private String email;
     @Column(name="date_of_birth")
     private LocalDate dateOfBirth;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     @OneToMany(mappedBy = "person")
-    @Column(name="list_of_participations")
     private List<Participation> listOfParticipations;
 
     public Person() {
     }
     public Person(String name) {
         this.name = name;
+    }
+
+    public Person(String name, String surname, String email, LocalDate dateOfBirth, Gender gender) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
     }
 
     public long getId() {
@@ -75,9 +83,6 @@ public class Person {
         return listOfParticipations;
     }
 
-    public void setListOfParticipations(List<Participation> listOfParticipations) {
-        this.listOfParticipations = listOfParticipations;
-    }
 
     @Override
     public String toString() {

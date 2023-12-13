@@ -28,18 +28,17 @@ public class Event {
     @Column(name = "venue_capacity")
     private int maximumCapacity;
     @Embedded
-    @Column(name="event_location")
     private Location location;
     @OneToMany(mappedBy = "event")
-    @Column(name="list_of_participations")
     private List<Participation> listOfParticipations;
     public Event(){
 
     }
-    public Event(String title, LocalDate eventDate, EventType eventType) {
+    public Event(String title, LocalDate eventDate, EventType eventType, Location location) {
         this.title = title;
         this.eventDate = eventDate;
         this.eventType = eventType;
+        this.location = location;
     }
 
     public long getId() {
