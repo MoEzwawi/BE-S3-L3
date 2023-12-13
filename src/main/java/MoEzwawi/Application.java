@@ -18,8 +18,12 @@ public class Application {
 
         EntityManager em = emf.createEntityManager();
         EventDAO dao = new EventDAO(em);
+/*
         Event evento1 = dao.getById(8);
-        evento1.setEventType(EventType.PRIVATE);
+*/
+        Event evento1 = new Event("Sagra della cipolla",Event.parseDateForItaly("02/06/2024"),EventType.PUBLIC);
+        evento1.setDescription("Per me la cipolla");
+        evento1.setMaximumCapacity(100);
         /* Event concerto = dao.getById(0);
         logger.info("L'evento "+concerto.getTitle()+" si terrà il "+concerto.getEventDate());
         Event partita = dao.getById(4);
