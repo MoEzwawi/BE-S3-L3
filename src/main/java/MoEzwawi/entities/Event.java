@@ -1,9 +1,12 @@
 package MoEzwawi.entities;
 
+import MoEzwawi.entities.enums.EventType;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Locale;
 
 @Entity
@@ -24,6 +27,12 @@ public class Event {
     private EventType eventType;
     @Column(name = "venue_capacity")
     private int maximumCapacity;
+    @Embedded
+    @Column(name="event_location")
+    private Location location;
+    @OneToMany(mappedBy = "event")
+    @Column(name="list_of_participations")
+    private List<Participation> listOfParticipations;
     public Event(){
 
     }
@@ -63,6 +72,14 @@ public class Event {
 
     public EventType getEventType() {
         return eventType;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public void setEventType(EventType eventType) {
