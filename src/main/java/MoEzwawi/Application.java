@@ -27,13 +27,15 @@ public class Application {
         EventDAO eventDAO = new EventDAO(em);
         PersonDAO personDAO = new PersonDAO(em);
         ParticipationDAO participationDAO = new ParticipationDAO(em);
-        LocalDate aldosB = Event.parseDateForItaly("28/09/58");
-        LocalDate giovannisB = Event.parseDateForItaly("20/02/57");
-        LocalDate giacomosB = Event.parseDateForItaly("26/04/56");
-        LocalDate marinasB = Event.parseDateForItaly("16/05/63");
+        LocalDate aldosB = Event.parseDateForItaly("28/09/1958");
+        LocalDate giovannisB = Event.parseDateForItaly("20/02/1957");
+        LocalDate giacomosB = Event.parseDateForItaly("26/04/1956");
+        LocalDate marinasB = Event.parseDateForItaly("16/05/1963");
+
         Location piazza = new Location("Piazza","Bagnone");
         Location stadio = new Location("San Siro","Milano");
         Location teatro = new Location("Scala","Milano");
+
         Person aldo = new Person("Aldo","Baglio","aldo@email",aldosB,Gender.MALE);
         Person giovanni = new Person("Giovanni","Storti","giovanni@email",giovannisB,Gender.MALE);
         Person giacomo = new Person("Giacomo","Poretti","giacomo@email",giacomosB,Gender.MALE);
@@ -46,11 +48,11 @@ public class Application {
         sagra.setMaximumCapacity(100);
         sagra.setDescription("Cibi a base di cipolla");
         Event partita = new Event("Partita del cuore",Event.parseDateForItaly("03/07/2024"),EventType.PUBLIC,stadio);
-        sagra.setMaximumCapacity(40000);
-        sagra.setDescription("Partita di beneficenza");
+        partita.setMaximumCapacity(40000);
+        partita.setDescription("Partita di beneficenza");
         Event concerto = new Event("Concerto di musica classica",Event.parseDateForItaly("23/03/2024"),EventType.PRIVATE,teatro);
-        sagra.setMaximumCapacity(150);
-        sagra.setDescription("Musica di qualità");
+        concerto.setMaximumCapacity(150);
+        concerto.setDescription("Musica di qualità");
         eventDAO.save(sagra);
         eventDAO.save(partita);
         eventDAO.save(concerto);
